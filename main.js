@@ -55,4 +55,17 @@ document.getElementById("thirdCanvas").style.display="inline-block";
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         ctx2.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         ctx3.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    }      
+    }
+    canvas.addEventListener("touchstart", touchpadmove);
+function touchpadmove(e){current_position_of_mouse_x = e.touches[0].clientX - canvas.offsetLeft;
+current_position_of_mouse_y= e.touches[0].clientY- canvas.offsetTop; 
+ctx.beginPath(); 
+    ctx.strokeStyle = color;
+     
+   ctx.moveto(last_position_of_mouse_x,last_position_of_mouse_y);
+   ctx.lineto(current_position_of_mouse_x,current_position_of_mouse_y);
+   ctx.stroke();
+   last_position_of_mouse_x=current_position_of_mouse_x;
+   last_position_of_mouse_y=current_position_of_mouse_y;
+}
+
